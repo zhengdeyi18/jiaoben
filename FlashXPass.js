@@ -1,4 +1,6 @@
 const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
 
 // 生成随机deviceId
 function generateRandomDeviceId() {
@@ -60,8 +62,29 @@ axios.post(url_login, payload_login, { headers: headers_login })
     let passwordMatch = resp_config.data.match(/password: (\S+)/);
     if (passwordMatch && passwordMatch.length > 1) {
       // 找到第一个password值
-      let password = passwordMatch[1];
-      console.log(password); // 输出密码
+      let newPassword = passwordMatch[1];
+      console.log(newPassword); // 输出密码
+
+      // 指定 FlashX.txt 文件的路径
+      const filePath = path.join(__dirname, 'FlashX.txt');
+
+      // 读取 FlashX.txt 文件的内容
+      fs.readFile(filePath, 'utf8', function (err, data) {
+        if (err) {
+          return console.error(err);
+        }
+
+        // 使用正则表达式替换所有的旧密码为新密码
+        const updatedData = data.replace(/password=\S+/g, `password=${newPassword}`);
+
+        // 将修改后的内容写回 FlashX.txt 文件
+        fs.writeFile(filePath, updatedData, 'utf8', function (err) {
+          if (err) {
+            return console.error(err);
+          }
+          console.log('The password has been updated successfully!');
+        });
+      });
     } else {
       console.log('No password found in the response data.');
       process.exit(1);
