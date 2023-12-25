@@ -66,7 +66,7 @@ axios.post(url_login, payload_login, { headers: headers_login })
       console.log(newPassword); // 输出密码
 
       // 指定 FlashX.txt 文件的路径
-      const filePath = path.join(__dirname, 'FlashX.txt');
+      const filePath = path.join(__dirname, 'FlashX.conf');
 
       // 读取 FlashX.txt 文件的内容
       fs.readFile(filePath, 'utf8', function (err, data) {
