@@ -1,5 +1,4 @@
 /*多次元雅思
-
 [rewrite_local] 
 ^https?:\/\/ielts\.dcyedu\.com\/\/app\/user\/info url script-response-body https://raw.githubusercontent.com/zhengdeyi18/jiaoben/main/dcyys.js
 [MITM]
