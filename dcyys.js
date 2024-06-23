@@ -1,7 +1,7 @@
 /*多次元雅思
 
 [rewrite_local] 
-^https?:\/\/ielts\.dcyedu\.com\/\/app\/user\/info url script-response-body https://raw.githubusercontent.com/Rnik666/YJTJS/main/DCYYS.js
+^https?:\/\/ielts\.dcyedu\.com\/\/app\/user\/info url script-response-body https://raw.githubusercontent.com/zhengdeyi18/jiaoben/main/dcyys.js
 [MITM]
 hostname = ielts.dcyedu.com
 */
