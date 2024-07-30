@@ -1,6 +1,3 @@
-#!name=ASSPP增强脚本--Eric
-#!desc=增加端口同时查询版本号id
-
 [MITM]
 hostname =  %APPEND% api.timbrd.com
 
