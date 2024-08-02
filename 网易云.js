@@ -1,4 +1,5 @@
 #!name=网易云音乐
+#!desc=解锁
 
 [Rewrite]
 ^https?:\/\/interface\d?\.music\.163\.com\/e?api\/vip\/cashier\/tspopup\/get - reject-200
