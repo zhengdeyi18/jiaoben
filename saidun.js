@@ -64,7 +64,7 @@ function copyToClipboard(text) {
     case "Loon":
     case "Stash":
     case "Shadowrocket":
-      $clipboard.set(text);
+      $clipboard.write(text);
       break;
     case "Quantumult X":
       $clipboard.text = text;
