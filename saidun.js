@@ -34,7 +34,7 @@ code != 200 ? ($.error("接口报错: " + (body.msg || "未知错误")), $.done(
       iv = CryptoJS.enc.Utf8.parse("TmPrPhkOf8by0cvx"),
       decryptedUrl = AES_Decrypt(encryptedUrl, key, iv, CryptoJS);
     $.log("Decrypted URL: " + decryptedUrl);
-    $.msg($.name, "🎉解密成功", "URL: ".concat(decryptedUrl));
+    $.msg($.name, "🎉尊重原创@iuiuiui1解密成功", "URL: ".concat(decryptedUrl));
   } catch (error) {
     $.logErr(error);
   } finally {
@@ -53,9 +53,13 @@ function AES_Decrypt(encryptedData, key, iv, CryptoJS) {
   return decrypted.toString(CryptoJS.enc.Utf8);
 }
 
-* */
 function creatUtils() {
     return new (class {
+        createCryptoJS() {
+            // 这里是 CryptoJS 的代码
+            const CryptoJS = require("crypto-js");
+            return CryptoJS;
+        }
 
         // 获取当前时间, 格式: 2021-01-01
         currentDate() {
