@@ -34,7 +34,7 @@ code != 200 ? ($.error("接口报错: " + (body.msg || "未知错误")), $.done(
       iv = CryptoJS.enc.Utf8.parse("TmPrPhkOf8by0cvx"),
       decryptedUrl = AES_Decrypt(encryptedUrl, key, iv, CryptoJS);
     $.log("Decrypted URL: " + decryptedUrl);
-    $.msg($.name, "🎉尊重原创@iuiuiui1解密成功", "URL: ".concat(decryptedUrl));
+    $.msg($.name, "🎉解密成功", "URL: ".concat(decryptedUrl));
   } catch (error) {
     $.logErr(error);
   } finally {
@@ -53,26 +53,6 @@ function AES_Decrypt(encryptedData, key, iv, CryptoJS) {
   return decrypted.toString(CryptoJS.enc.Utf8);
 }
 
-/*
-async function loadUtils() {
-    let code = $.getdata('Utils_Code') || '';
-    if (code && Object.keys(code).length) {
-        console.log(`✅ ${$.name}: 缓存中存在Utils代码, 跳过下载`)
-        eval(code)
-        return creatUtils();
-    }
-    console.log(`🚀 ${$.name}: 开始下载Utils代码`)
-    return new Promise(async (resolve) => {
-        $.getScript(
-            'https://mirror.ghproxy.com/https://raw.githubusercontent.com/xzxxn777/Surge/main/Utils/Utils.js'
-        ).then((fn) => {
-            $.setdata(fn, "Utils_Code")
-            eval(fn)
-            console.log(`✅ Utils加载成功, 请继续`)
-            resolve(creatUtils())
-        })
-    })
-}
 * */
 function creatUtils() {
     return new (class {
