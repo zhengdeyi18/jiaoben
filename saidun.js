@@ -35,6 +35,10 @@ code != 200 ? ($.error("接口报错: " + (body.msg || "未知错误")), $.done(
       decryptedUrl = AES_Decrypt(encryptedUrl, key, iv, CryptoJS);
     $.log("Decrypted URL: " + decryptedUrl);
     $.msg($.name, "🎉解密成功", "URL: ".concat(decryptedUrl));
+    
+    // 将解密的 URL 复制到剪贴板
+    copyToClipboard(decryptedUrl);
+    
   } catch (error) {
     $.logErr(error);
   } finally {
@@ -51,6 +55,27 @@ function AES_Decrypt(encryptedData, key, iv, CryptoJS) {
     "padding": CryptoJS.pad.Pkcs7
   });
   return decrypted.toString(CryptoJS.enc.Utf8);
+}
+
+function copyToClipboard(text) {
+  const env = $.getEnv();
+  switch (env) {
+    case "Surge":
+    case "Loon":
+    case "Stash":
+    case "Shadowrocket":
+      $clipboard.set(text);
+      break;
+    case "Quantumult X":
+      $clipboard.text = text;
+      break;
+    case "Node.js":
+      const { exec } = require("child_process");
+      exec(`echo "${text}" | pbcopy`);
+      break;
+    default:
+      $.log("不支持的环境，无法复制到剪贴板");
+  }
 }
 
 function creatUtils() {
