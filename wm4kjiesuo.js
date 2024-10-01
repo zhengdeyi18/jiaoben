@@ -2,7 +2,7 @@
 完美4k解锁VIP
 
 [rewrite_local]
-^http://111.229.140.167:8762/apptov5/v1/vod/getVod url script-response-body https://raw.githubusercontent.com/zhengdeyi18/jiaoben/main/wm4k.js
+^http://111.229.140.167:8762/apptov5/v1/vod/getVod url script-response-body https://raw.githubusercontent.com/zhengdeyi18/jiaoben/main/wm4kjiesuo.js
 
 [mitm] 
 hostname = %APPEND% 111.229.140.167
