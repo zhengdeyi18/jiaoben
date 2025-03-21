@@ -12,4 +12,4 @@
 首页歌单会员歌曲 = type=http-request, pattern=^https?:\/\/interface3?\.music\.163\.com\/eapi\/(homepage\/|v6\/)?playlist\/, script-path=https://github.com/zhengdeyi18/jiaoben/raw/refs/heads/main/wangyiyun.js, timeout=60
 会员认证 = type=http-request, pattern=^https?:\/\/interface3?\.music\.163\.com\/eapi\/vipauth\/app\/auth\/(soundquality\/)?query, script-path=https://github.com/zhengdeyi18/jiaoben/raw/refs/heads/main/wangyiyun.js, timeout=60
 [MITM]
-hostname = %APPEND% interface3*.music.163.com
+hostname = %APPEND% interface*.music.163.com
