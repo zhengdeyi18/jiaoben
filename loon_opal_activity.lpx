@@ -1,0 +1,26 @@
+#!name=Opal余额与行程
+#!desc=使用Opal卡号和4位安全码登录，定时推送余额、卡状态和最近行程。参数在插件页面填写，换卡时直接改卡号和安全码。
+#!author=Codex
+#!tag=Opal,余额,行程
+#!system=iOS,iPadOS
+#!loon_version=3.5.0(969)
+#!homepage=https://transportnsw.info
+#!icon=https://transportnsw.info/favicon.ico
+#!date=2026-07-31
+#!type=normal
+
+[Argument]
+cardId = input,"",tag=Opal卡号,desc=15-16位纯数字，例如 3085220368616062
+cardSc = input,"",tag=4位安全码,desc=卡对应的4位数字安全码
+cardLabel = input,"",tag=通知名称,desc=可选；留空时显示 Opal + 卡号后4位
+cronExpression = input,"0 8 * * *",tag=自动运行时间,desc=Loon cron表达式，例如每天8点为 0 8 * * *
+activityRows = input,"12",tag=查询条数,desc=向接口请求的活动条数，建议 12
+lookbackDays = input,"540",tag=回看天数,desc=活动查询起始日期，默认回看540天
+notifyRows = input,"3",tag=通知行数,desc=通知里显示最近几条活动
+showLocations = switch,true,tag=显示站点,desc=通知中显示起点和终点
+forceLogin = switch,false,tag=每次重新登录,desc=默认关闭；token过期或401时自动重新登录
+enableNotification = switch,true,tag=发送通知,desc=关闭后只写控制台日志和本地结果
+debug = switch,true,tag=控制台日志,desc=输出 [opal] 调试日志
+
+[Script]
+cron {cronExpression} script-path=loon_opal_activity.js,tag=Opal余额与行程,timeout=60,argument=[{cardId},{cardSc},{cardLabel},{activityRows},{lookbackDays},{notifyRows},{showLocations},{forceLogin},{enableNotification},{debug}]
