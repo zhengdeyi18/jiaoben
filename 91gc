@@ -1,0 +1,33 @@
+#!name = 91GC 去广告
+#!desc = 去广告、拦截上报与广告 SDK
+#!author = 89996462 / Converted for Loon
+#!homepage = https://github.com/89996462/Quantumult-X
+#!type = normal
+
+[Rule]
+# 事件追踪
+URL-REGEX,^https?:\/\/d3k4e7spixznr4\.cloudfront\.net\/,REJECT
+
+# DC 上报
+URL-REGEX,^https?:\/\/api-dc-prod-\d+\.cyou\/,REJECT
+URL-REGEX,^https?:\/\/api-dc2-prod-\d+\.cyou\/,REJECT
+
+# 广告 SDK（Butterfly 通用）
+URL-REGEX,^https?:\/\/.*\.eqfx9bas\.cc\/,REJECT
+URL-REGEX,^https?:\/\/.*\.yihaici\.(top|com)\/,REJECT
+URL-REGEX,^https?:\/\/.*\.epuf3tk\.cc\/,REJECT
+
+# 广告静态资源
+URL-REGEX,^https?:\/\/[^\/]+\/upload_01\/ads\/,REJECT
+
+[Script]
+# 去广告 — 请求头强制不走缓存
+http-request ^https?:\/\/da8ttmrfqqhqf\.cloudfront\.net\/.* script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/91gc.js,timeout=10,tag=91GC_CloudFront_请求头
+http-request ^https?:\/\/06erg\.com\/.* script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/91gc.js,timeout=10,tag=91GC_入口域名_请求头
+
+# 去广告 — 响应体注入 Hook 脚本
+http-response ^https?:\/\/da8ttmrfqqhqf\.cloudfront\.net\/.* script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/91gc.js,requires-body=true,timeout=10,tag=91GC_CloudFront_响应体
+http-response ^https?:\/\/06erg\.com\/.* script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/91gc.js,requires-body=true,timeout=10,tag=91GC_入口域名_响应体
+
+[Mitm]
+hostname = 06erg.com, da8ttmrfqqhqf.cloudfront.net, d1w3p997s8acw6.cloudfront.net, d3k4e7spixznr4.cloudfront.net, sssyyshc.lkkwip.cn, *.cloudfront.net, *.lkkwip.cn, *.cyou, *.eqfx9bas.cc, *.yihaici.top, *.yihaici.com, *.epuf3tk.cc
