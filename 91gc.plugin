@@ -22,11 +22,11 @@ URL-REGEX,^https?:\/\/[^\/]+\/upload_01\/ads\/,REJECT
 
 [Script]
 # 去广告 — 请求头强制不走缓存
-http-request ^https?:\/\/da8ttmrfqqhqf\.cloudfront\.net\/.* script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/91gc.js,timeout=10,tag=91GC_CloudFront_请求头
+http-request ^https?:\/\/d3k4e7spixznr4\.cloudfront\.net\/.* script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/91gc.js,timeout=10,tag=91GC_CloudFront_请求头
 http-request ^https?:\/\/06erg\.com\/.* script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/91gc.js,timeout=10,tag=91GC_入口域名_请求头
 
 # 去广告 — 响应体注入 Hook 脚本
-http-response ^https?:\/\/da8ttmrfqqhqf\.cloudfront\.net\/.* script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/91gc.js,requires-body=true,timeout=10,tag=91GC_CloudFront_响应体
+http-response ^https?:\/\/d3k4e7spixznr4\.cloudfront\.net\/.* script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/91gc.js,requires-body=true,timeout=10,tag=91GC_CloudFront_响应体
 http-response ^https?:\/\/06erg\.com\/.* script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ghs/91gc.js,requires-body=true,timeout=10,tag=91GC_入口域名_响应体
 
 [Mitm]
